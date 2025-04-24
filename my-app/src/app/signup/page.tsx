@@ -21,8 +21,8 @@ export default function SignupPage() {
       setLoading(true); // Start loading before the request
       const response = await axios.post("/api/users/signup", {
         username: user.username,
-        email : user.email,
-        password: user.password
+        email: user.email,
+        password: user.password,
       }); // Send the user object directly
       console.log(response.data);
       router.push("/login"); // Redirect to login page upon successful signup

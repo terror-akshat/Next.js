@@ -1,8 +1,9 @@
 "use client";
-
 import React from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 export default function Login() {
+  const router = useRouter();
   const [loading, setLoading] = React.useState(false);
   const [user, setUser] = React.useState({
     email: "",
@@ -15,10 +16,10 @@ export default function Login() {
       setLoading(true);
       const response = await axios.post("/api/users/login", user);
       console.log(response.data);
-      
+
       if (response.data.status === 201) {
-        // Router.push()
         alert("Login successfuly");
+        router.push("/profile");
       }
     } catch (error: any) {
       console.log(error.message);
